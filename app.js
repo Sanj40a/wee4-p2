@@ -1,33 +1,13 @@
 const express = require("express");
 const app = express();
 
-const {
-  getAllBooks,
-  getBookById,
-  createBook,
-  updateBook,
-  deleteBook,
-} = require("./bookHandlers"); // 'bookHandlers.js' contains the route handlers
-
+const bookRouter = require("./routes/bookRouter");
 // Middleware to parse JSON
 app.use(express.json());
 
 // ROUTES
-
-// GET /books
-app.get("/books", getAllBooks);
-
-// POST /books
-app.post("/books", createBook);
-
-// GET /books/:bookId
-app.get("/books/:bookId", getBookById);
-
-// PUT /books/:bookId
-app.put("/books/:bookId", updateBook);
-
-// DELETE /books/:bookId
-app.delete("/books/:bookId", deleteBook);
+// Mount the book router at /books path
+app.use("/books", bookRouter);
 
 const port = 4000;
 // Start the server

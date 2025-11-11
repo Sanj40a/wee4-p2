@@ -1,10 +1,11 @@
-const Book = require("./bookLib");
+const Book = require("../models/bookModel");
 
 // GET /books
 const getAllBooks = (req, res) => {
   const books = Book.getAll();
   res.json(books);
 };
+
 
 // POST /books
 const createBook = (req, res) => {
